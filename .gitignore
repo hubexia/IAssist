@@ -1,0 +1,30 @@
+# =========================
+# OS / Editor
+# =========================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.log
+
+# =========================
+# Node / Package Managers
+# =========================
+node_modules/
+.pnpm-debug.log*
+npm-debug.log*
+
+
+# =========================
+# Env files
+# =========================
+.env
+.env.*
+!.env.example
+
+
+
+
+
+
