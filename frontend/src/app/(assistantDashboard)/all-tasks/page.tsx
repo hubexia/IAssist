@@ -1,13 +1,19 @@
+import Header from "@/components/Header";
+import SearchBar from "@/components/ui/SearchBar";
 import Task from "@/components/ui/Task";
-import TaskPage from "@/components/TaskPage";
-import { ASSISTANT } from "@/lib/constants";
+
+import { ALLAVAILABLETASKS, ASSISTANT, OPEN } from "@/lib/constants";
 import { tasks } from "@/lib/data";
 
 function AllTasksPage() {
+  const availableTasks = tasks.filter((task) => task.status === OPEN);
   return (
-    <TaskPage role={ASSISTANT} title="View All Available Tasks" showTopText={false} >
-      <section className=" grid grid-cols-2 gap-4">
-        {tasks.map((task) => (
+    <div className="p-8 bg-surface min-h-screen">
+      <Header title="View All Available Task">
+        <SearchBar />
+      </Header>
+      <section className="grid grid-cols-2 gap-4">
+        {availableTasks.map((task) => (
           <Task
             task={task}
             key={task.id}
@@ -15,10 +21,12 @@ function AllTasksPage() {
             role={ASSISTANT}
             showDescription
             showProgress={false}
+            href={`${ALLAVAILABLETASKS}/${task.id}`}
+            showAssistant={false}
           />
         ))}
       </section>
-    </TaskPage>
+    </div>
   );
 }
 

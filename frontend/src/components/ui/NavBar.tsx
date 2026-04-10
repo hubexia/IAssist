@@ -10,7 +10,7 @@ function NavBar() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <nav className="container mx-auto px-4 bg-(--surface)">
+    <nav className=" mx-auto px-4 w-full">
       <div className="flex justify-between items-center py-4">
         <Link href="/">
           <Logo />

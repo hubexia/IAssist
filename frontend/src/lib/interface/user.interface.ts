@@ -35,3 +35,18 @@ export interface IRegisteredUser extends IUser {
 export interface IClientProfile {
   pendingTasks: number;
 }
+
+export interface IAssistant{
+  id: string;
+    name: string;
+    email: string;
+    rating: number;
+    completedTasks: number;
+    avatar: string;
+    skills: string[];
+    bio: string;
+    portfolio: string[];
+    hourlyRate: number;
+    location: string;
+    languages: string[];
+}

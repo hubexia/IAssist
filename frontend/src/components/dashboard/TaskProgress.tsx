@@ -12,6 +12,12 @@ import { IUserRole } from "@/lib/interface/user.interface";
 
 function TaskProgress({ role }: { role: IUserRole }) {
   const isClient = role == CLIENT;
+
+  const currentRole = isClient ? CLIENT : ASSISTANT;
+  const currentRoleTaskRoute = isClient
+    ? CLIENTTASKSROUTE
+    : ASSISTANTTASKSROUTE;
+
   return (
     <div className="bg-white rounded-lg shadow-sm p-6 border border-gray-100">
       <div className="flex justify-between items-center mb-6">
@@ -19,7 +25,7 @@ function TaskProgress({ role }: { role: IUserRole }) {
           Task Progress
         </h2>
         <Link
-          href={isClient ? CLIENTTASKSROUTE : ASSISTANTTASKSROUTE}
+          href={currentRoleTaskRoute}
           className="text-[#2B6CB0] hover:text-[#1f4c7d] text-sm font-medium"
         >
           View All
@@ -31,7 +37,8 @@ function TaskProgress({ role }: { role: IUserRole }) {
           <Task
             task={task}
             key={task.id}
-            role={isClient ? CLIENT : ASSISTANT}
+            role={currentRole}
+            href={`${currentRoleTaskRoute}/${task.id}`}
           />
         ))}
       </div>

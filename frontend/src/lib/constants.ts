@@ -19,4 +19,5 @@ export const CLIENTTASKSROUTE = "/client-tasks";
 export const ASSISTANTTASKSROUTE = "/assistant-tasks";
 export const ALLAVAILABLETASKS = "/all-tasks";
 export const ASSISTANTSROUTE = "/assistants";
-export const LOGIN = "/login"
+export const LOGIN = "/login";
+export const ASSISTANTSAPPLICATIONROUTE = "/assistant-applications";
