@@ -16,6 +16,7 @@ export interface ITask extends Document {
   category: string;
   city: string;
   offeredPrice: number;
+  dueDate?: Date;
   media?: string[];
   status:
     | typeof OPEN
@@ -41,6 +42,7 @@ const TaskSchema = new Schema<ITask>(
     dueDate: { type: Date },
     category: { type: String, required: true },
     city: { type: String, required: true },
+    dueDate: { type: Date },
     media: [{ type: String }],
     status: {
       type: String,

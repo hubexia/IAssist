@@ -3,7 +3,7 @@ import { Offer } from "./offer.model";
 import { Task } from "../tasks/task.model";
 import { Assistant } from "../assistants/assistant.model";
 import { sendSuccess, sendError } from "../../utils/response";
-import { AuthRequest } from "../../middleware/auth.middleware";
+import { AuthRequest } from "../../middlewares/auth.middleware";
 import { io } from "../../index";
 
 export const createOffer = async (req: AuthRequest, res: Response): Promise<void> => {

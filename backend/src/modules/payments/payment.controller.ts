@@ -2,7 +2,7 @@ import { Response } from "express";
 import { Payment } from "./payment.model";
 import { Task } from "../tasks/task.model";
 import { sendSuccess, sendError } from "../../utils/response";
-import { AuthRequest } from "../../middleware/auth.middleware";
+import { AuthRequest } from "../../middlewares/auth.middleware";
 import { ENV } from "../../config/env";
 import axios from "axios";
 
