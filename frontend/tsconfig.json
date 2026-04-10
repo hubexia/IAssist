@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@root/*": ["../*"]
     }
   },
   "include": [
@@ -28,7 +29,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
-    "**/*.mts"
+    "**/*.mts",
+    "src/app/(dashboard)/dashboard",
+    "src/app/(dashboard)/tasks"
   ],
   "exclude": ["node_modules"]
 }

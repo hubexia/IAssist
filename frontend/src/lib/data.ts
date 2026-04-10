@@ -1,0 +1,281 @@
+import { OPEN, IN_PROGRESS, COMPLETED } from "./constants";
+import { ITask } from "./interface/task.interface";
+
+export const tasks: ITask[] = [
+  {
+    id: "task-1",
+    clientId: "client-1",
+    title: "Redesign landing page",
+    description:
+      "Improve the homepage flow and CTA to increase conversions. The current landing page has a high bounce rate and we need to optimize the user experience to drive more sign-ups. Key requirements include: modern design, clear value proposition, compelling call-to-action, and mobile responsiveness.",
+    offeredPrice: 1500,
+    locationLat: 40.7128,
+    locationLng: -74.006,
+    createdAt: "2026-03-18",
+    dueDate: "2026-04-25",
+    status: OPEN,
+    applications: [
+      {
+        id: "app-1",
+        taskId: "task-1",
+        assistantId: "assistant-1",
+        clientId: "client-1",
+        proposedPrice: 1400,
+        message:
+          "I have extensive experience in landing page optimization and can deliver high-quality results. My portfolio includes similar projects with measurable conversion improvements.",
+        status: "pending",
+        createdAt: "2026-03-19",
+      },
+      {
+        id: "app-2",
+        taskId: "task-1",
+        assistantId: "assistant-2",
+        clientId: "client-1",
+        proposedPrice: 1600,
+        message:
+          "Specialized in conversion rate optimization with proven track record. I've increased conversions by 150%+ for similar projects.",
+        status: "pending",
+        createdAt: "2026-03-20",
+      },
+      {
+        id: "app-3",
+        taskId: "task-1",
+        assistantId: "assistant-3",
+        clientId: "client-1",
+        proposedPrice: 1450,
+        message:
+          "Full-stack developer with strong UI/UX background. I can redesign your landing page with modern technologies and ensure mobile responsiveness.",
+        status: "pending",
+        createdAt: "2026-03-21",
+      },
+      {
+        id: "app-4",
+        taskId: "task-1",
+        assistantId: "assistant-4",
+        clientId: "client-1",
+        proposedPrice: 1550,
+        message:
+          "Digital marketing specialist with design experience. I focus on conversion-driven designs that maximize ROI.",
+        status: "pending",
+        createdAt: "2026-03-22",
+      },
+      {
+        id: "app-5",
+        taskId: "task-1",
+        assistantId: "assistant-5",
+        clientId: "client-1",
+        proposedPrice: 1300,
+        message:
+          "Creative designer with 8+ years experience. I specialize in landing pages that convert visitors into customers.",
+        status: "pending",
+        createdAt: "2026-03-23",
+      },
+      {
+        id: "app-6",
+        taskId: "task-1",
+        assistantId: "assistant-6",
+        clientId: "client-1",
+        proposedPrice: 1700,
+        message:
+          "UX/UI designer and frontend developer. I create beautiful, functional landing pages with excellent user experience.",
+        status: "pending",
+        createdAt: "2026-03-24",
+      },
+    ],
+  },
+  {
+    id: "task-2",
+    clientId: "client-1",
+    assignedAssistantId: "assistant-1",
+    title: "Write product launch copy",
+    description:
+      "Create messaging for the new AI assistant launch email. Need compelling copy that highlights the key features, benefits, and unique value proposition. The email should drive engagement and conversions for the product launch.",
+    offeredPrice: 400,
+    createdAt: "2026-03-21",
+    dueDate: "2026-04-18",
+    status: IN_PROGRESS,
+    applications: [
+      {
+        id: "app-3",
+        taskId: "task-2",
+        assistantId: "assistant-1",
+        clientId: "client-1",
+        proposedPrice: 380,
+        message:
+          "Expert copywriter with experience in AI product launches. I've written successful campaigns for similar AI tools.",
+        status: "accepted",
+        createdAt: "2026-03-22",
+      },
+    ],
+  },
+  {
+    id: "task-3",
+    clientId: "client-1",
+    title: "Build onboarding funnel",
+    description:
+      "Design and implement the user onboarding experience. Create a seamless flow from sign-up to first value delivery. Include welcome email sequence, in-app tutorials, and progress tracking.",
+    offeredPrice: 2200,
+    createdAt: "2026-03-25",
+    dueDate: "2026-05-02",
+    status: OPEN,
+    applications: [
+      {
+        id: "app-4",
+        taskId: "task-3",
+        assistantId: "assistant-3",
+        clientId: "client-1",
+        proposedPrice: 2100,
+        message:
+          "Full-stack developer with UX expertise in onboarding flows. I've built similar systems for SaaS products.",
+        status: "pending",
+        createdAt: "2026-03-26",
+      },
+    ],
+  },
+  {
+    id: "task-4",
+    clientId: "client-1",
+    assignedAssistantId: "assistant-2",
+    title: "SEO audit for blog",
+    description:
+      "Review blog content and recommend SEO improvements. Analyze current SEO performance, identify keyword opportunities, and provide actionable recommendations for improving search rankings.",
+    offeredPrice: 650,
+    createdAt: "2026-03-28",
+    dueDate: "2026-04-29",
+    status: COMPLETED,
+    applications: [
+      {
+        id: "app-5",
+        taskId: "task-4",
+        assistantId: "assistant-2",
+        clientId: "client-1",
+        proposedPrice: 600,
+        message:
+          "SEO specialist with 5+ years experience in content optimization. I've improved rankings for 200+ blog posts.",
+        status: "accepted",
+        createdAt: "2026-03-29",
+      },
+    ],
+  },
+];
+
+export const mockClient = {
+  id: "client-1",
+  name: "Sarah Johnson",
+  email: "sarah@techcorp.com",
+  company: "TechCorp Solutions",
+  avatar: "/avatars/sarah.jpg",
+};
+
+export const mockAssistant = {
+  id: "assistant-1",
+  name: "Alex Chen",
+  email: "alex@freelance.com",
+  rating: 4.8,
+  completedTasks: 47,
+  avatar: "/avatars/alex.jpg",
+};
+
+export const mockAssistants = [
+  {
+    id: "assistant-1",
+    name: "Alex Chen",
+    email: "alex@freelance.com",
+    rating: 4.8,
+    completedTasks: 47,
+    avatar: "/avatars/alex.jpg",
+    skills: ["UI/UX Design", "Frontend Development", "Conversion Optimization"],
+    bio: "Experienced designer with a passion for creating conversion-focused landing pages. I've helped 50+ clients increase their conversion rates by an average of 120%.",
+    portfolio: [
+      "https://alexdesigns.com/project1",
+      "https://alexdesigns.com/project2",
+    ],
+    hourlyRate: 75,
+    location: "San Francisco, CA",
+    languages: ["English", "Mandarin"],
+  },
+  {
+    id: "assistant-2",
+    name: "Maria Rodriguez",
+    email: "maria@designstudio.com",
+    rating: 4.9,
+    completedTasks: 32,
+    avatar: "/avatars/maria.jpg",
+    skills: ["Landing Page Design", "A/B Testing", "Analytics"],
+    bio: "Data-driven designer who combines creativity with analytics. Specialize in landing pages that convert and A/B testing to optimize performance.",
+    portfolio: [
+      "https://mariadesigns.com/landing1",
+      "https://mariadesigns.com/landing2",
+    ],
+    hourlyRate: 85,
+    location: "New York, NY",
+    languages: ["English", "Spanish"],
+  },
+  {
+    id: "assistant-3",
+    name: "David Kim",
+    email: "david@devsolutions.com",
+    rating: 4.7,
+    completedTasks: 89,
+    avatar: "/avatars/david.jpg",
+    skills: ["Full Stack Development", "React", "Node.js", "UX Design"],
+    bio: "Full-stack developer with strong design skills. I build beautiful, functional web applications that users love to use.",
+    portfolio: [
+      "https://daviddev.com/app1",
+      "https://daviddev.com/app2",
+      "https://daviddev.com/app3",
+    ],
+    hourlyRate: 90,
+    location: "Seattle, WA",
+    languages: ["English", "Korean"],
+  },
+  {
+    id: "assistant-4",
+    name: "Sarah Johnson",
+    email: "sarah@marketingpro.com",
+    rating: 4.6,
+    completedTasks: 67,
+    avatar: "/avatars/sarah.jpg",
+    skills: ["Digital Marketing", "Landing Page Design", "SEO"],
+    bio: "Marketing professional with design expertise. I create landing pages that not only look great but also drive results through strategic marketing.",
+    portfolio: [
+      "https://sarahmarketing.com/campaign1",
+      "https://sarahmarketing.com/campaign2",
+    ],
+    hourlyRate: 70,
+    location: "Chicago, IL",
+    languages: ["English"],
+  },
+  {
+    id: "assistant-5",
+    name: "James Wilson",
+    email: "james@creativestudio.com",
+    rating: 4.8,
+    completedTasks: 103,
+    avatar: "/avatars/james.jpg",
+    skills: ["Graphic Design", "Branding", "Web Design"],
+    bio: "Creative director with 10+ years experience. I specialize in creating memorable brand experiences and conversion-optimized landing pages.",
+    portfolio: [
+      "https://jamescreative.com/brand1",
+      "https://jamescreative.com/brand2",
+      "https://jamescreative.com/brand3",
+    ],
+    hourlyRate: 95,
+    location: "Los Angeles, CA",
+    languages: ["English"],
+  },
+  {
+    id: "assistant-6",
+    name: "Emma Thompson",
+    email: "emma@uxstudio.com",
+    rating: 4.9,
+    completedTasks: 78,
+    avatar: "/avatars/emma.jpg",
+    skills: ["UX/UI Design", "Frontend Development", "User Research"],
+    bio: "UX designer and frontend developer who creates user-centered designs. I combine research, design, and development to create exceptional user experiences.",
+    portfolio: ["https://emmaux.com/project1", "https://emmaux.com/project2"],
+    hourlyRate: 80,
+    location: "Austin, TX",
+    languages: ["English", "French"],
+  },
+];
