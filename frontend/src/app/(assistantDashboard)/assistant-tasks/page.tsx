@@ -1,11 +1,16 @@
 import Task from "@/components/ui/Task";
-import TaskPage from "@/components/TaskPage";
-import { ASSISTANT } from "@/lib/constants";
+
+import { ASSISTANT, ASSISTANTTASKSROUTE } from "@/lib/constants";
 import { tasks } from "@/lib/data";
+import Header from "@/components/Header";
+import SearchBar from "@/components/ui/SearchBar";
 
 function AssistantTasksPage() {
   return (
-    <TaskPage role={ASSISTANT} title="View All Your Tasks">
+    <div className="p-8 bg-surface min-h-screen">
+      <Header title="View All Your Tasks">
+        <SearchBar />
+      </Header>
       <section className=" grid grid-cols-2 gap-4">
         {tasks.map((task) => (
           <Task
@@ -13,10 +18,11 @@ function AssistantTasksPage() {
             key={task.id}
             className="border-gray-400"
             role={ASSISTANT}
+            href={`${ASSISTANTTASKSROUTE}/${task.id}`}
           />
         ))}
       </section>
-    </TaskPage>
+    </div>
   );
 }
 

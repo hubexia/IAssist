@@ -12,19 +12,13 @@ import {
   Mail,
 } from "lucide-react";
 
-import {
-  OPEN,
-  IN_PROGRESS,
-  COMPLETED,
-  CLIENTTASKSROUTE,
-  REJECTED,
-} from "@/lib/constants";
+import { OPEN, IN_PROGRESS, CLIENTTASKSROUTE, REJECTED } from "@/lib/constants";
 import Link from "next/link";
 import { mockAssistants, tasks } from "@/lib/data";
-import { getStatusColor } from "@/lib/utils";
-import Image from "next/image";
-// Import your Payment component
+
 import Payment from "@/components/tasks/Payment";
+import Application from "@/components/tasks/Application";
+import TaskInfo from "@/components/tasks/TaskInfo";
 
 function TaskDetailPage() {
   const params = useParams();
@@ -79,51 +73,7 @@ function TaskDetailPage() {
           </Link>
         </div>
 
-        {/* Task Image & Details */}
-        <div className="relative w-fit mx-auto mb-8">
-          <Image
-            src={"/work.png"}
-            alt={task.title}
-            width={1000}
-            height={1000}
-            className="md:w-lg md:h-80 rounded-2xl object-cover shadow-md"
-          />
-          <span
-            className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold absolute top-4 right-4 shadow-sm ${getStatusColor(task.status)}`}
-          >
-            {task.status}
-          </span>
-        </div>
-
-        <section className="md:flex gap-6 mb-8">
-          <div className="flex-1">
-            <h1 className="text-3xl font-extrabold text-[#1A365D] mb-4 tracking-tight">
-              {task.title}
-            </h1>
-            <p className="text-[#718096] leading-relaxed text-justify mb-6 text-base">
-              {task.description}
-            </p>
-            <div className="flex flex-wrap items-center gap-6 text-[#718096] text-sm font-medium">
-              <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-[#2B6CB0]" />
-                <span>
-                  Created {new Date(task.createdAt).toLocaleDateString()}
-                </span>
-              </div>
-              {task.dueDate && (
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-[#2B6CB0]" />
-                  <span>Due {new Date(task.dueDate).toLocaleDateString()}</span>
-                </div>
-              )}
-              <div className="px-3 py-1 bg-blue-50 rounded-lg">
-                <span className="font-bold text-[#2B6CB0]">
-                  Budget: ${task.offeredPrice.toLocaleString()}
-                </span>
-              </div>
-            </div>
-          </div>
-        </section>
+        <TaskInfo task={task} />
 
         {assignedAssistant && (
           <div className="mb-12 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -193,81 +143,28 @@ function TaskDetailPage() {
                 const assistant = mockAssistants.find(
                   (a) => a.id === application.assistantId,
                 );
-                return (
-                  <div
+                return assistant ? (
+                  <Application
                     key={application.id}
-                    className="bg-white border border-gray-100 rounded-xl p-5 shadow-sm hover:shadow-md transition-shadow"
-                  >
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex gap-3">
-                        <div className="w-12 h-12 bg-[#E6FFFA] text-[#2C7A7B] rounded-full flex items-center justify-center font-bold text-lg">
-                          {assistant?.name.charAt(0)}
-                        </div>
-                        <div>
-                          <h4 className="font-bold text-[#1A365D]">
-                            {assistant?.name}
-                          </h4>
-                          <p className="text-xs text-[#718096] font-medium">
-                            ★ {assistant?.rating} • {assistant?.completedTasks}{" "}
-                            tasks
-                          </p>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <p className="text-lg font-extrabold text-[#1A365D]">
-                          ${application.proposedPrice}
-                        </p>
-                      </div>
-                    </div>
-
-                    <p className="text-sm text-[#718096] line-clamp-2 mb-4 italic">
-                      &quot;{application.message}&quot;
-                    </p>
-
-                    <div className="flex items-center justify-between gap-2">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-[#2B6CB0] font-bold text-xs p-0 h-auto uppercase tracking-wider"
-                      >
-                        View Profile
-                      </Button>
-
-                      {/* 2. Modified Accept Button to trigger Payment Modal */}
-                      <div className="flex gap-2">
-                        <Button
-                          size="sm"
-                          className="bg-[#2B6CB0] hover:bg-[#1A365D] text-white px-6 font-bold rounded-lg transition-all"
-                          onClick={() => {
-                            setSelectedAmount(application.proposedPrice);
-                            setIsPaymentModalOpen(true);
-                          }}
-                        >
-                          Accept
-                        </Button>
-
-                        <Button
-                          size="sm"
-                          className="bg-red-50 text-red-600 hover:bg-red-100 px-6 border-none shadow-none font-bold"
-                        >
-                          Reject
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                );
+                    application={application}
+                    assistant={assistant}
+                    onAccept={() => {
+                      setSelectedAmount(application.proposedPrice);
+                      setIsPaymentModalOpen(true);
+                    }}
+                  />
+                ) : null;
               })}
             </div>
           </div>
         )}
 
-        {/* 3. The Modal Component Injection */}
         <Payment
           taskId={taskId}
           amount={selectedAmount || task.offeredPrice} // Fallback to task budget if none selected
           isOpen={isPaymentModalOpen}
           onClose={() => setIsPaymentModalOpen(false)}
-          userEmail="client@example.com" // You can pass dynamic user email here
+          userEmail="client@example.com"
         />
 
         {/* Global Task Actions */}

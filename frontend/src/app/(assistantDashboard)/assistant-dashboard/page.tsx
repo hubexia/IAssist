@@ -4,6 +4,7 @@ import TaskAnalytics from "@/components/dashboard/TaskAnalytics";
 import Assistants from "@/components/dashboard/Assistants";
 import { tasks } from "@/lib/data";
 import { ASSISTANT } from "@/lib/constants";
+import Header from "@/components/Header";
 
 export default function AssistantDashboardPage() {
   const earning = 345867;
@@ -31,14 +32,10 @@ export default function AssistantDashboardPage() {
 
   return (
     <section className="p-8 bg-surface min-h-screen">
-      <div className="flex justify-between  mb-8">
-        <div>
-          <h1 className="text-3xl font-bold text-primary-dark">Dashboard</h1>
-          <p className="text-muted mt-2 text-sm">
-            Plan, prioritize, and accomplish your tasks with ease.
-          </p>
-        </div>
-      </div>
+      <Header
+        title="Dashboard"
+        subtiitle="Plan, prioritize, and accomplish your tasks with ease."
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {stats.map((stat) => (
