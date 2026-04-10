@@ -38,10 +38,9 @@ const TaskSchema = new Schema<ITask>(
     },
     title: { type: String, required: true, trim: true },
     description: { type: String, required: true },
-    offeredPrice: { type: Number, required: true },
-    dueDate: { type: Date },
     category: { type: String, required: true },
     city: { type: String, required: true },
+    offeredPrice: { type: Number, required: true },
     dueDate: { type: Date },
     media: [{ type: String }],
     status: {
