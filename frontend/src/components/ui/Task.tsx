@@ -128,12 +128,9 @@ function Task({
 
       <div className="flex items-center justify-between pt-3 border-t border-gray-50">
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1.5">
-            <DollarSign className="w-3.5 h-3.5 text-[#2B6CB0]" />
-            <span className="text-sm font-bold text-[#1A365D]">
-              ${task.offeredPrice || 0}
-            </span>
-          </div>
+          <p className="text-sm font-bold text-[#1A365D]">
+            ₦{task.offeredPrice.toLocaleString() || 0}
+          </p>
 
           {isClient && (
             <div className="flex items-center gap-1.5">
